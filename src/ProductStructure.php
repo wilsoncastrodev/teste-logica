@@ -20,7 +20,13 @@ class ProductStructure
 
     public function make(): array
     {
-       //todo your code.
-        return [];
+        $products_count = array_count_values(self::products);
+
+        foreach($products_count as $product => $count) {
+            $product_array = explode("-", $product);
+            $result[$product_array[0]][$product_array[1]] = $count;
+        }
+
+        return $result;
     }
 }
